@@ -6,7 +6,7 @@ Created on Sat Sep 15 20:40:13 2018
 @author: glenn
 """
 
-#題目一
+#題目一:找出list中最大值
 def find_max(a_list):
     # 首先我們要先檢查清單是不是空的
     if not a_list: # 請看底下講解
@@ -18,7 +18,7 @@ def find_max(a_list):
     return max_num # 最後回傳看過的最大數
    
 print(find_max([1, -10, 81]))
-#題目二
+#題目二：找出成績第二高的人
 students = [['Jerry', 88], ['Justin', 84], ['Tom', 90], ['Akriti', 92], ['Harsh', 90]]
 
 def second_highest(students):
@@ -34,7 +34,7 @@ def second_highest(students):
         print(student)
         
 second_highest(students)    
-#題目三
+#題目三：紀錄購買商品及件數
 data = ['麥香奶茶 2', '御飯糰 1', '可可 10', '麥香奶茶 1']
 def count_products(data):
     products = {}
@@ -49,7 +49,7 @@ def count_products(data):
 
 count_products(data)
 
-#挑戰：體驗使用Python做金融研究
+#挑戰：體驗使用Python做金融研究：連續三天上漲，買進；反之，賣出；其他狀況，觀望
 data =  [9422, 9468, 9512, 9524, 9550, 9450, 9410, 9368]
 def three_days(data):
     info = []
