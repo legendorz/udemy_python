@@ -53,12 +53,12 @@ count_products(data)
 data =  [9422, 9468, 9512, 9524, 9550, 9450, 9410, 9368]
 def three_days(data):
     info = []
-    for i in range(0,3):
-        info.append(0)
-    for i in range(3, len(data)-2):
-        if data[i-1] > data[i-2] and data[i-2] > data[i-3]:
+    for i in range(len(data)):
+        if i < 3:
+            info.append(0)
+        elif data[i] > data[i-1] and data[i-1] > data[i-2] and data[i-2] > data[i-3]:
             info.append(1)
-        elif data[i-1] < data[i-2] and data[i-2] < data[i-3]:
+        elif data[i] < data[i-1] and data[i-1] < data[i-2] and data[i-2] < data[i-3]:
             info.append(-1)
         else:
             info.append(0)
