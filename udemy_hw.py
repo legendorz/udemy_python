@@ -136,3 +136,40 @@ def main():
 main()
 
 
+#挑戰三：比較各國指數
+
+
+import pandas as pd
+pd.core.common.is_list_like = pd.api.types.is_list_like
+import pandas_datareader as pdr
+
+import fix_yahoo_finance as yf
+yf.pdr_override()
+import matplotlib.pyplot as plt
+import datetime as dt
+from datetime import timedelta
+from pandas_datareader import data, wb
+
+day_entry = 120
+start = (dt.datetime.now() - timedelta(days= int(day_entry)))
+end = dt.datetime.now()
+dji = data.get_data_yahoo(['^DJI'], start, end)
+twii = data.get_data_yahoo(['^TWII'], start, end)
+stocks = pd.DataFrame({"^DJI": dji['Close'].pct_change().cumsum(),"^TWII": twii["Close"].pct_change().cumsum()})
+
+from matplotlib import style
+import pylab
+from pylab import rcParams
+
+style.use('ggplot')
+plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei']
+plt.rcParams['axes.unicode_minus'] = False
+rcParams['figure.figsize'] = 12, 8
+DJI = stocks['^DJI'].plot(color='Blue', label='DJI')
+plt.title('台灣加權指數與美國道瓊指數之比較')
+plt.ylabel('指數漲跌幅百分比')
+TWII = stocks['^TWII'].plot(color='Red', label='TWII' )
+plt.legend()
+plt.show()
+
+
